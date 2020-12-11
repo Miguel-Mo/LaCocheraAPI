@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LaCochera.BL\LaCochera.BL.csproj" />
+    <ProjectReference Include="..\LaCochera.Core\LaCochera.Core.csproj" />
+    <ProjectReference Include="..\LaCochera.DAL\LaCochera.DAL.csproj" />
+  </ItemGroup>
+
+
+</Project>
