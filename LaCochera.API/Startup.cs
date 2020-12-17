@@ -1,6 +1,8 @@
 using LaCochera.BL.Contracts;
 using LaCochera.BL.Implementations;
 using LaCochera.DAL.Models;
+using LaCochera.DAL.Repositories.Contracts;
+using LaCochera.DAL.Repositories.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +37,7 @@ namespace LaCochera.API
 
             //Procedemos a inyectar dependencias:
             services.AddScoped<ILoginBL, LoginBL>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

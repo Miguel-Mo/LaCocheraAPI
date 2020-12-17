@@ -9,8 +9,5 @@ namespace LaCochera.Core.DTO
         public string Usuario{ get; set; }
         public string Password{ get; set; }
 
-
-
-
     }
 }

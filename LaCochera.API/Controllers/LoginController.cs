@@ -13,12 +13,12 @@ namespace LaCochera.API.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
+        public ILoginBL _LoginBL { get; set; }
+
         public LoginController(ILoginBL loginBL)
         {
             _LoginBL = loginBL;
         }
-
-        public ILoginBL _LoginBL { get; set; }
 
         [HttpPost]
         public bool Logining(LoginDTO loginDTO)
@@ -26,11 +26,5 @@ namespace LaCochera.API.Controllers
             return _LoginBL.Login(loginDTO);
         }
 
-
     }
-
-
-
-
-
 }
