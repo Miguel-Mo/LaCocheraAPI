@@ -1,8 +1,10 @@
 using LaCochera.BL.Contracts;
 using LaCochera.BL.Implementations;
+using LaCochera.DAL.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,7 +30,10 @@ namespace LaCochera.API
         {
             services.AddControllers();
 
-            //Procedemos a inyectar dependencias.
+            //Inyección del contexto:
+            services.AddDbContext<CocherabbddContext>(opts => opts.UseMySql(Configuration["ConnectionString:CocheraDB"]));
+
+            //Procedemos a inyectar dependencias:
             services.AddScoped<ILoginBL, LoginBL>();
         }
 

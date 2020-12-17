@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace LaCochera.DAL.Models
 {
-    public partial class cocherabbddContext : DbContext
+    public partial class CocherabbddContext : DbContext
     {
-        public cocherabbddContext()
+        public CocherabbddContext()
         {
         }
 
-        public cocherabbddContext(DbContextOptions<cocherabbddContext> options)
+        public CocherabbddContext(DbContextOptions<CocherabbddContext> options)
             : base(options)
         {
         }
