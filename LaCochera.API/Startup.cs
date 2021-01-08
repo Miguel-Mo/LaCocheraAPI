@@ -32,6 +32,15 @@ namespace LaCochera.API
         {
             services.AddControllers();
 
+            //Para habilitar CORS en nuestra API
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
+
             //Inyección del contexto:
             services.AddDbContext<CocherabbddContext>(opts => opts.UseMySql(Configuration["ConnectionString:CocheraDB"]));
 
@@ -51,6 +60,8 @@ namespace LaCochera.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
