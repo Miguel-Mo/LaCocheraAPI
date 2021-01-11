@@ -35,7 +35,7 @@ namespace LaCochera.API
             services.AddControllers();
 
             // Automapper
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(MappingProfile));
 
             // Para habilitar CORS en nuestra API
             services.AddCors(options =>

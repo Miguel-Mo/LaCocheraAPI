@@ -1,4 +1,5 @@
-﻿using LaCochera.Core.DTO;
+﻿using AutoMapper;
+using LaCochera.Core.DTO;
 using LaCochera.DAL.Models;
 using LaCochera.DAL.Repositories.Contracts;
 using System;
@@ -11,28 +12,28 @@ namespace LaCochera.DAL.Repositories.Implementations
     public class MecanicosRepository : IMecanicosRepository
     {
         public CocherabbddContext _context { get; set; }
+        private IMapper _mapper;
 
-        public MecanicosRepository(CocherabbddContext context)
+        public MecanicosRepository(CocherabbddContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public ICollection<MecanicoDTO> read()
         {
             var mecanicos =  _context.Mecanicos.ToList();
 
-            var mecanicosDTO = new List<MecanicoDTO>();
-
-            mecanicos.ForEach(mecanico => mecanicosDTO.Add(map(mecanico)));
+            var mecanicosDTO = _mapper.Map<ICollection<MecanicoDTO>>(mecanicos);
 
             return mecanicosDTO;
         }
 
         public MecanicoDTO read(int id)
         {
-            Mecanicos mecanico = _context.Mecanicos.Find(mecanico => mecanico.Id == id);
+            Mecanicos mecanico = new Mecanicos();
 
-            return map(mecanico);
+            return _mapper.Map<MecanicoDTO>(mecanico);
         }
     }
 }

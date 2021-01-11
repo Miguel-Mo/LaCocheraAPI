@@ -1,4 +1,5 @@
-﻿using LaCochera.Core.DTO;
+﻿using AutoMapper;
+using LaCochera.Core.DTO;
 using LaCochera.DAL.Models;
 using LaCochera.DAL.Repositories.Contracts;
 using System;
