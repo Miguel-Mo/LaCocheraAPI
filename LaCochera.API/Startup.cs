@@ -1,6 +1,8 @@
+using AutoMapper;
 using LaCochera.BL.Contracts;
 using LaCochera.BL.Implementations;
 using LaCochera.DAL.Models;
+using LaCochera.DAL.Repositories;
 using LaCochera.DAL.Repositories.Contracts;
 using LaCochera.DAL.Repositories.Implementations;
 using Microsoft.AspNetCore.Builder;
@@ -32,7 +34,10 @@ namespace LaCochera.API
         {
             services.AddControllers();
 
-            //Para habilitar CORS en nuestra API
+            // Automapper
+            services.AddAutoMapper(typeof(Startup));
+
+            // Para habilitar CORS en nuestra API
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -41,12 +46,23 @@ namespace LaCochera.API
                     .AllowAnyHeader());
             });
 
-            //Inyección del contexto:
+            // Inyección del contexto:
             services.AddDbContext<CocherabbddContext>(opts => opts.UseMySql(Configuration["ConnectionString:CocheraDB"]));
 
-            //Procedemos a inyectar dependencias:
+            // Procedemos a inyectar dependencias:
             services.AddScoped<ILoginBL, LoginBL>();
             services.AddScoped<ILoginRepository, LoginRepository>();
+
+            services.AddScoped<IMecanicosRepository, MecanicosRepository>();
+
+
+            services.AddScoped<IVendedoresRepository, VendedoresRepository>();
+
+
+            services.AddScoped<IReparacionesRepository, ReparacionesRepository>();
+
+
+            services.AddScoped<IPropuestaVentaRepository, PropuestaVentaRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

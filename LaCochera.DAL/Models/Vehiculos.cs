@@ -12,8 +12,6 @@ namespace LaCochera.DAL.Models
         }
 
         public int Id { get; set; }
-        public int TipoId { get; set; }
-        public int ConcesionarioId { get; set; }
         public string Potencia { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
