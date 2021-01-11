@@ -16,12 +16,12 @@ namespace LaCochera.DAL.Repositories.Implementations
             _context = context;
         }
 
-        public ICollection<ReparacionDTO> read()
+        public ICollection<ReparacionDTO> Read()
         {
             throw new NotImplementedException();
         }
 
-        public ReparacionDTO read(int id)
+        public ReparacionDTO Read(int id)
         {
             throw new NotImplementedException();
         }

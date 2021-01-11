@@ -1,12 +1,11 @@
 ﻿using LaCochera.Core.DTO;
-using LaCochera.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LaCochera.DAL.Repositories.Contracts
+namespace LaCochera.BL.Contracts
 {
-    public interface IVendedoresRepository
+    public interface IVendedoresBL
     {
         ICollection<VendedorDTO> Read();
         VendedorDTO Read(int id);

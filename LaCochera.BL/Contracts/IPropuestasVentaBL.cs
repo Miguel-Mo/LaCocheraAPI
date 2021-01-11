@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LaCochera.DAL.Repositories.Contracts
+namespace LaCochera.BL.Contracts
 {
-    public interface IPropuestaVentaRepository
+    public interface IPropuestasVentaBL
     {
         ICollection<PropuestaVentaDTO> Read();
         PropuestaVentaDTO Read(int id);

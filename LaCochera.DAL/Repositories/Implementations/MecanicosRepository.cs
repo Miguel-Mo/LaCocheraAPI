@@ -20,7 +20,7 @@ namespace LaCochera.DAL.Repositories.Implementations
             _mapper = mapper;
         }
 
-        public ICollection<MecanicoDTO> read()
+        public ICollection<MecanicoDTO> Read()
         {
             var mecanicos =  _context.Mecanicos.ToList();
 
@@ -29,7 +29,7 @@ namespace LaCochera.DAL.Repositories.Implementations
             return mecanicosDTO;
         }
 
-        public MecanicoDTO read(int id)
+        public MecanicoDTO Read(int id)
         {
             Mecanicos mecanico = new Mecanicos();
 

@@ -17,12 +17,12 @@ namespace LaCochera.DAL.Repositories.Implementations
             _context = context;
         }
 
-        public ICollection<VendedorDTO> read()
+        public ICollection<VendedorDTO> Read()
         {
             throw new NotImplementedException();
         }
 
-        public VendedorDTO read(int id)
+        public VendedorDTO Read(int id)
         {
             throw new NotImplementedException();
         }
