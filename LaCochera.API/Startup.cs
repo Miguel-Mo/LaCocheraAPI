@@ -34,6 +34,11 @@ namespace LaCochera.API
         {
             services.AddControllers();
 
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+
             // Automapper
             services.AddAutoMapper(typeof(MappingProfile));
 
