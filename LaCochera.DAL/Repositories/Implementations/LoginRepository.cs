@@ -21,12 +21,12 @@ namespace LaCochera.DAL.Repositories.Implementations
 
         public bool Login(LoginDTO loginDTO)
         {
-           string prueba = ToSHA256(loginDTO.Password);
-           return _context.Usuarios.Any(u => u.Login == loginDTO.Usuario && u.Password == ToSHA256(loginDTO.Password));
+            string prueba = ToSHA256(loginDTO.Password);
+            return _context.Usuarios.Any(u => u.Login == loginDTO.Usuario && u.Password == ToSHA256(loginDTO.Password));
         }
 
         private string ToSHA256(string pass)
-        { 
+        {
             byte[] sha256 = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(pass));
 
             StringBuilder builder = new StringBuilder();

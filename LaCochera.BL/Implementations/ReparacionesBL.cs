@@ -7,7 +7,7 @@ using System.Text;
 
 namespace LaCochera.BL.Implementations
 {
-    class ReparacionesBL : IReparacionesBL
+    public class ReparacionesBL : IReparacionesBL
     {
         public IReparacionesRepository _reparacionesRepository { get; set; }
 

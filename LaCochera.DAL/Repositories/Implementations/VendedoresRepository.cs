@@ -4,6 +4,7 @@ using LaCochera.DAL.Models;
 using LaCochera.DAL.Repositories.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace LaCochera.DAL.Repositories.Implementations
@@ -11,20 +12,28 @@ namespace LaCochera.DAL.Repositories.Implementations
     public class VendedoresRepository : IVendedoresRepository
     {
         public CocherabbddContext _context { get; set; }
+        private IMapper _mapper;
 
-        public VendedoresRepository(CocherabbddContext context)
+        public VendedoresRepository(CocherabbddContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public ICollection<VendedorDTO> Read()
         {
-            throw new NotImplementedException();
+            var lista = _context.Vendedores.ToList();
+
+            var listaDTO = _mapper.Map<ICollection<VendedorDTO>>(lista);
+
+            return listaDTO;
         }
 
         public VendedorDTO Read(int id)
         {
-            throw new NotImplementedException();
+            var item = _context.Vendedores.Find(id);
+
+            return _mapper.Map<VendedorDTO>(item);
         }
     }
 }

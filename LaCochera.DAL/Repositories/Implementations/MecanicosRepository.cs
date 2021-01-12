@@ -22,7 +22,7 @@ namespace LaCochera.DAL.Repositories.Implementations
 
         public ICollection<MecanicoDTO> Read()
         {
-            var mecanicos =  _context.Mecanicos.ToList();
+            var mecanicos = _context.Mecanicos.ToList();
 
             var mecanicosDTO = _mapper.Map<ICollection<MecanicoDTO>>(mecanicos);
 

@@ -54,15 +54,16 @@ namespace LaCochera.API
             services.AddScoped<ILoginRepository, LoginRepository>();
 
             services.AddScoped<IMecanicosRepository, MecanicosRepository>();
-
+            services.AddScoped<IMecanicosBL, MecanicosBL>();
 
             services.AddScoped<IVendedoresRepository, VendedoresRepository>();
-
+            services.AddScoped<IVendedoresBL, VendedoresBL>();
 
             services.AddScoped<IReparacionesRepository, ReparacionesRepository>();
-
+            services.AddScoped<IReparacionesBL, ReparacionesBL>();
 
             services.AddScoped<IPropuestaVentaRepository, PropuestaVentaRepository>();
+            services.AddScoped<IPropuestasVentaBL, PropuestasVentaBL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

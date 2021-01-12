@@ -7,7 +7,7 @@ using System.Text;
 
 namespace LaCochera.BL.Implementations
 {
-    class VendedoresBL : IVendedoresBL
+    public class VendedoresBL : IVendedoresBL
     {
         public IVendedoresRepository _vendedoresRepository { get; set; }
 

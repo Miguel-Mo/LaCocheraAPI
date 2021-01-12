@@ -10,8 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LaCochera.BL\LaCochera.BL.csproj" />
-    <ProjectReference Include="..\LaCochera.Core\LaCochera.Core.csproj" />
-    <ProjectReference Include="..\LaCochera.DAL\LaCochera.DAL.csproj" />
   </ItemGroup>
 
 

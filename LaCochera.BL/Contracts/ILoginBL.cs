@@ -8,9 +8,7 @@ namespace LaCochera.BL.Contracts
 {
     public interface ILoginBL
     {
-
         public bool Login(LoginDTO loginDTO);
-
 
     }
 }

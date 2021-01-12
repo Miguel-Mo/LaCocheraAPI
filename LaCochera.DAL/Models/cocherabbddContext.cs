@@ -16,6 +16,7 @@ namespace LaCochera.DAL.Models
         }
 
         public virtual DbSet<Cliente> Cliente { get; set; }
+        public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<CombustibleVehiculos> CombustibleVehiculos { get; set; }
         public virtual DbSet<Concesionarios> Concesionarios { get; set; }
         public virtual DbSet<Especialidades> Especialidades { get; set; }
@@ -35,7 +36,7 @@ namespace LaCochera.DAL.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=localhost;port=3306;user=root;password=1234;database=cocherabbdd", x => x.ServerVersion("8.0.19-mysql"));
+                optionsBuilder.UseMySql("server=localhost;port=3306;user=cochera;password=1234;database=la_cochera", x => x.ServerVersion("5.7.24-mysql"));
             }
         }
 
@@ -45,7 +46,9 @@ namespace LaCochera.DAL.Models
             {
                 entity.ToTable("cliente");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Apellidos)
                     .IsRequired()
@@ -85,7 +88,9 @@ namespace LaCochera.DAL.Models
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.Presupuesto).HasColumnName("presupuesto");
+                entity.Property(e => e.Presupuesto)
+                    .HasColumnName("presupuesto")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Telefono)
                     .IsRequired()
@@ -95,11 +100,24 @@ namespace LaCochera.DAL.Models
                     .HasCollation("utf8_general_ci");
             });
 
+            modelBuilder.Entity<Clientes>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("clientes");
+
+                entity.Property(e => e.Columna1)
+                    .HasColumnName("Columna 1")
+                    .HasColumnType("int(11)");
+            });
+
             modelBuilder.Entity<CombustibleVehiculos>(entity =>
             {
                 entity.ToTable("combustible_vehiculos");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
@@ -113,7 +131,9 @@ namespace LaCochera.DAL.Models
             {
                 entity.ToTable("concesionarios");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Ciudad)
                     .IsRequired()
@@ -158,9 +178,13 @@ namespace LaCochera.DAL.Models
                 entity.HasIndex(e => e.TipoId)
                     .HasName("fk_Tipos_Vehiculos_has_Mecanicos_Tipos_Vehiculos1_idx");
 
-                entity.Property(e => e.TipoId).HasColumnName("tipoID");
+                entity.Property(e => e.TipoId)
+                    .HasColumnName("tipoID")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.MecanicoId).HasColumnName("mecanicoID");
+                entity.Property(e => e.MecanicoId)
+                    .HasColumnName("mecanicoID")
+                    .HasColumnType("int(11)");
 
                 entity.HasOne(d => d.Mecanico)
                     .WithMany(p => p.Especialidades)
@@ -182,9 +206,13 @@ namespace LaCochera.DAL.Models
                 entity.HasIndex(e => e.UsuarioId)
                     .HasName("FK_jefe_usuarios");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.UsuarioId).HasColumnName("usuarioId");
+                entity.Property(e => e.UsuarioId)
+                    .HasColumnName("usuarioId")
+                    .HasColumnType("int(11)");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.Jefe)
@@ -199,11 +227,15 @@ namespace LaCochera.DAL.Models
                 entity.HasIndex(e => e.UsuarioId)
                     .HasName("FK_mecanicos_usuarios");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.EsJefe).HasColumnName("esJefe");
 
-                entity.Property(e => e.UsuarioId).HasColumnName("usuarioId");
+                entity.Property(e => e.UsuarioId)
+                    .HasColumnName("usuarioId")
+                    .HasColumnType("int(11)");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.Mecanicos)
@@ -213,7 +245,7 @@ namespace LaCochera.DAL.Models
 
             modelBuilder.Entity<PropuestaVenta>(entity =>
             {
-                entity.HasKey(e => new { e.Id, e.VendedorId, e.VehiculoVenderId, e.ClienteId })
+                entity.HasKey(e => new { e.Id })
                     .HasName("PRIMARY")
                     .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0, 0, 0 });
 
@@ -230,13 +262,20 @@ namespace LaCochera.DAL.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
+                    .HasColumnType("int(11)")
                     .ValueGeneratedOnAdd();
 
-                entity.Property(e => e.VendedorId).HasColumnName("vendedorID");
+                entity.Property(e => e.VendedorId)
+                    .HasColumnName("vendedorID")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.VehiculoVenderId).HasColumnName("vehiculoVenderID");
+                entity.Property(e => e.VehiculoVenderId)
+                    .HasColumnName("vehiculoVenderID")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.ClienteId).HasColumnName("clienteID");
+                entity.Property(e => e.ClienteId)
+                    .HasColumnName("clienteID")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Estado)
                     .IsRequired()
@@ -259,7 +298,9 @@ namespace LaCochera.DAL.Models
                     .HasColumnName("fechaLimite")
                     .HasColumnType("date");
 
-                entity.Property(e => e.Presupuesto).HasColumnName("presupuesto");
+                entity.Property(e => e.Presupuesto)
+                    .HasColumnName("presupuesto")
+                    .HasColumnType("int(11)");
 
                 entity.HasOne(d => d.Cliente)
                     .WithMany(p => p.PropuestaVenta)
@@ -282,7 +323,7 @@ namespace LaCochera.DAL.Models
 
             modelBuilder.Entity<Reparaciones>(entity =>
             {
-                entity.HasKey(e => new { e.Id, e.MecanicoId, e.VehiculoRepararId, e.ClienteId })
+                entity.HasKey(e => new { e.Id })
                     .HasName("PRIMARY")
                     .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0, 0, 0 });
 
@@ -299,13 +340,20 @@ namespace LaCochera.DAL.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
+                    .HasColumnType("int(11)")
                     .ValueGeneratedOnAdd();
 
-                entity.Property(e => e.MecanicoId).HasColumnName("mecanicoID");
+                entity.Property(e => e.MecanicoId)
+                    .HasColumnName("mecanicoID")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.VehiculoRepararId).HasColumnName("vehiculoRepararID");
+                entity.Property(e => e.VehiculoRepararId)
+                    .HasColumnName("vehiculoRepararID")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.ClienteId).HasColumnName("clienteID");
+                entity.Property(e => e.ClienteId)
+                    .HasColumnName("clienteID")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Componentes)
                     .HasColumnName("componentes")
@@ -334,9 +382,13 @@ namespace LaCochera.DAL.Models
                     .HasColumnName("fechaInicio")
                     .HasColumnType("datetime");
 
-                entity.Property(e => e.PresupuestoEstimado).HasColumnName("presupuestoEstimado");
+                entity.Property(e => e.PresupuestoEstimado)
+                    .HasColumnName("presupuestoEstimado")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.PresupuestoReal).HasColumnName("presupuestoReal");
+                entity.Property(e => e.PresupuestoReal)
+                    .HasColumnName("presupuestoReal")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.TiempoEstimado)
                     .IsRequired()
@@ -375,7 +427,9 @@ namespace LaCochera.DAL.Models
             {
                 entity.ToTable("tipos_vehiculos");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
@@ -392,7 +446,9 @@ namespace LaCochera.DAL.Models
                 entity.HasIndex(e => e.ConcesionarioId)
                     .HasName("fk_usuarios_concesionarios1_idx");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Apellidos)
                     .IsRequired()
@@ -401,7 +457,9 @@ namespace LaCochera.DAL.Models
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.ConcesionarioId).HasColumnName("concesionarioID");
+                entity.Property(e => e.ConcesionarioId)
+                    .HasColumnName("concesionarioID")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Dni)
                     .IsRequired()
@@ -438,7 +496,9 @@ namespace LaCochera.DAL.Models
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.Salario).HasColumnName("salario");
+                entity.Property(e => e.Salario)
+                    .HasColumnName("salario")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Telefono)
                     .IsRequired()
@@ -471,9 +531,13 @@ namespace LaCochera.DAL.Models
                 entity.HasIndex(e => e.TipoId)
                     .HasName("fk_vehiculos_Tipos_Vehiculos1_idx");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.ConcesionarioId).HasColumnName("concesionarioID");
+                entity.Property(e => e.ConcesionarioId)
+                    .HasColumnName("concesionarioID")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.FechaRegistro)
                     .HasColumnName("fechaRegistro")
@@ -500,7 +564,9 @@ namespace LaCochera.DAL.Models
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.TipoId).HasColumnName("tipoID");
+                entity.Property(e => e.TipoId)
+                    .HasColumnName("tipoID")
+                    .HasColumnType("int(11)");
 
                 entity.HasOne(d => d.Concesionario)
                     .WithMany(p => p.Vehiculos)
@@ -522,7 +588,9 @@ namespace LaCochera.DAL.Models
                 entity.HasIndex(e => e.VehiculoId)
                     .HasName("fk_vehiculos_reparar_vehiculos1_idx");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
@@ -537,7 +605,9 @@ namespace LaCochera.DAL.Models
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.VehiculoId).HasColumnName("vehiculoID");
+                entity.Property(e => e.VehiculoId)
+                    .HasColumnName("vehiculoID")
+                    .HasColumnType("int(11)");
 
                 entity.HasOne(d => d.Vehiculo)
                     .WithMany(p => p.VehiculosReparar)
@@ -556,9 +626,13 @@ namespace LaCochera.DAL.Models
                 entity.HasIndex(e => e.VehiculoId)
                     .HasName("fk_vehiculos_Vender_vehiculos1_idx");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.CombustibleId).HasColumnName("combustibleID");
+                entity.Property(e => e.CombustibleId)
+                    .HasColumnName("combustibleID")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Imagen)
                     .HasColumnName("imagen")
@@ -566,7 +640,9 @@ namespace LaCochera.DAL.Models
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.KmRecorridos).HasColumnName("kmRecorridos");
+                entity.Property(e => e.KmRecorridos)
+                    .HasColumnName("kmRecorridos")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Precio)
                     .HasColumnName("precio")
@@ -580,7 +656,9 @@ namespace LaCochera.DAL.Models
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.VehiculoId).HasColumnName("vehiculoID");
+                entity.Property(e => e.VehiculoId)
+                    .HasColumnName("vehiculoID")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Vendido).HasColumnName("vendido");
 
@@ -603,11 +681,17 @@ namespace LaCochera.DAL.Models
                 entity.HasIndex(e => e.UsuarioId)
                     .HasName("FK_vendedores_usuarios");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.NumVentas).HasColumnName("numVentas");
+                entity.Property(e => e.NumVentas)
+                    .HasColumnName("numVentas")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.UsuarioId).HasColumnName("usuarioId");
+                entity.Property(e => e.UsuarioId)
+                    .HasColumnName("usuarioId")
+                    .HasColumnType("int(11)");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.Vendedores)

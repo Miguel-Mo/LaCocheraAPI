@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LaCochera.BL.Contracts;
+using LaCochera.Core.DTO;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,37 +10,45 @@ using System.Threading.Tasks;
 
 namespace LaCochera.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class PropuestaVentaController : ControllerBase
     {
-        // GET: api/<PropuestaVentaController>
+
+        public IPropuestasVentaBL _propuestaVentaBL { get; set; }
+
+        public PropuestaVentaController(IPropuestasVentaBL propuestaVentaBL)
+        {
+            _propuestaVentaBL = propuestaVentaBL;
+        }
+
+        // GET: <PropuestaVentaController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<PropuestaVentaDTO> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _propuestaVentaBL.Read();
         }
 
-        // GET api/<PropuestaVentaController>/5
+        // GET <PropuestaVentaController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public PropuestaVentaDTO Get(int id)
         {
-            return "value";
+            return _propuestaVentaBL.Read(id);
         }
 
-        // POST api/<PropuestaVentaController>
+        // POST <PropuestaVentaController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<PropuestaVentaController>/5
+        // PUT <PropuestaVentaController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<PropuestaVentaController>/5
+        // DELETE <PropuestaVentaController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
