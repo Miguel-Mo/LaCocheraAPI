@@ -16,12 +16,12 @@ namespace LaCochera.BL.Implementations
             _reparacionesRepository = reparacionesRepository;
         }
 
-        public ICollection<ReparacionDTO> Read()
+        public ICollection<ReparacionAmpliadoDTO> Read()
         {
             return _reparacionesRepository.Read();
         }
 
-        public ReparacionDTO Read(int id)
+        public ReparacionAmpliadoDTO Read(int id)
         {
             return _reparacionesRepository.Read(id);
         }

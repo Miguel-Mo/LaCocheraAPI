@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaCochera.Core.DTO.Usuarios;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,13 +9,12 @@ namespace LaCochera.Core.DTO
     {
         public MecanicoDTO()
         {
-            Reparaciones = new HashSet<ReparacionDTO>();
+            Especialidades = new HashSet<EspecialidadDTO>();
         }
 
         public int Id { get; set; }
         public bool EsJefe { get; set; }
-
         public UsuarioDTO Usuario { get; set; }
-        public ICollection<ReparacionDTO> Reparaciones { get; set; }
+        public ICollection<EspecialidadDTO> Especialidades { get; set; }
     }
 }

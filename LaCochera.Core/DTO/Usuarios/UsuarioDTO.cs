@@ -9,7 +9,6 @@ namespace LaCochera.Core.DTO
         public int Id { get; set; }
         public int ConcesionarioId { get; set; }
         public string Login { get; set; }
-        public string Password { get; set; }
         public string Tipo { get; set; }
         public string Nombre { get; set; }
         public string Apellidos { get; set; }

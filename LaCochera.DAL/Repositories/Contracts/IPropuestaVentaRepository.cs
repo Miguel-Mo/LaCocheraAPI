@@ -1,4 +1,5 @@
 ﻿using LaCochera.Core.DTO;
+using LaCochera.Core.DTO.Ventas;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,6 @@ namespace LaCochera.DAL.Repositories.Contracts
     public interface IPropuestaVentaRepository
     {
         ICollection<PropuestaVentaDTO> Read();
-        PropuestaVentaDTO Read(int id);
+        PropuestaVentaAmpliadoDTO Read(int id);
     }
 }

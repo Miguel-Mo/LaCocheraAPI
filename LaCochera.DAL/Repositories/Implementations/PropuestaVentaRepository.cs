@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LaCochera.Core.DTO;
+using LaCochera.Core.DTO.Ventas;
 using LaCochera.DAL.Models;
 using LaCochera.DAL.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
@@ -23,18 +24,22 @@ namespace LaCochera.DAL.Repositories.Implementations
 
         public ICollection<PropuestaVentaDTO> Read()
         {
-            var lista = _context.PropuestaVenta.ToList();
+            var lista = _context.PropuestaVenta
+                .Include(venta => venta.VehiculoVender)
+                .Include(venta => venta.Cliente)
+                .Include(venta => venta.Vendedor)
+                .ToList();
 
             var listaDTO = _mapper.Map<ICollection<PropuestaVentaDTO>>(lista);
 
             return listaDTO;
         }
 
-        public PropuestaVentaDTO Read(int id)
+        public PropuestaVentaAmpliadoDTO Read(int id)
         {
             var item = _context.PropuestaVenta.Find(id);
 
-            return _mapper.Map<PropuestaVentaDTO>(item);
+            return _mapper.Map<PropuestaVentaAmpliadoDTO>(item);
         }
     }
 }

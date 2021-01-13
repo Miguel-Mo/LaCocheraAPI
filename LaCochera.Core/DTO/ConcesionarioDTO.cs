@@ -12,8 +12,5 @@ namespace LaCochera.Core.DTO
         public string Provincia { get; set; }
         public string Direccion { get; set; }
         public string Cp { get; set; }
-
-        public virtual ICollection<UsuarioDTO> Usuarios { get; set; }
-        public virtual ICollection<VehiculoDTO> Vehiculos { get; set; }
     }
 }

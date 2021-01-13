@@ -16,12 +16,12 @@ namespace LaCochera.BL.Implementations
             _propuestasVentaRepository = propuestasVentaRepository;
         }
 
-        public ICollection<PropuestaVentaDTO> Read()
+        public ICollection<PropuestaVentaAmpliadoDTO> Read()
         {
             return _propuestasVentaRepository.Read();
         }
 
-        public PropuestaVentaDTO Read(int id)
+        public PropuestaVentaAmpliadoDTO Read(int id)
         {
             return _propuestasVentaRepository.Read(id);
         }

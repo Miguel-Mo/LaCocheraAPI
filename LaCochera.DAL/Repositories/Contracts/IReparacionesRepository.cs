@@ -7,7 +7,7 @@ namespace LaCochera.DAL.Repositories.Contracts
 {
     public interface IReparacionesRepository
     {
-        ICollection<ReparacionDTO> Read();
-        ReparacionDTO Read(int id);
+        ICollection<ReparacionAmpliadoDTO> Read();
+        ReparacionAmpliadoDTO Read(int id);
     }
 }

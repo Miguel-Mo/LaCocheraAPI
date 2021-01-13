@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LaCochera.Core.DTO
+namespace LaCochera.Core.DTO.Clientes
 {
     public class ClienteDTO
     {
@@ -15,8 +15,5 @@ namespace LaCochera.Core.DTO
         public int Presupuesto { get; set; }
         public DateTime FechaRegistro { get; set; }
         public string DescripcionVehiculo { get; set; }
-
-        public virtual ICollection<PropuestaVentaDTO> PropuestaVenta { get; set; }
-        public virtual ICollection<ReparacionDTO> Reparaciones { get; set; }
     }
 }

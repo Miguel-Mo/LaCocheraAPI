@@ -1,9 +1,8 @@
-﻿using LaCochera.Core.DTO.Vehiculos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LaCochera.Core.DTO
+namespace LaCochera.Core.DTO.Reparaciones
 {
     public class ReparacionDTO
     {
@@ -17,9 +16,5 @@ namespace LaCochera.Core.DTO
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public string Estado { get; set; }
-
-        public ClienteDTO Cliente { get; set; }
-        public MecanicoDTO Mecanico { get; set; }
-        public VehiculoRepararDTO VehiculoReparar { get; set; }
     }
 }

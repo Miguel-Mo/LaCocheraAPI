@@ -7,7 +7,7 @@ namespace LaCochera.BL.Contracts
 {
     public interface IPropuestasVentaBL
     {
-        ICollection<PropuestaVentaDTO> Read();
-        PropuestaVentaDTO Read(int id);
+        ICollection<PropuestaVentaAmpliadoDTO> Read();
+        PropuestaVentaAmpliadoDTO Read(int id);
     }
 }

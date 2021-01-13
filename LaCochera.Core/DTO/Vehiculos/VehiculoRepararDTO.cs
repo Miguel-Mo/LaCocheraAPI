@@ -11,6 +11,6 @@ namespace LaCochera.Core.DTO.Vehiculos
         public string Matricula { get; set; }
 
         public VehiculoDTO Vehiculo { get; set; }
-        public ICollection<ReparacionDTO> Reparaciones { get; set; }
+
     }
 }

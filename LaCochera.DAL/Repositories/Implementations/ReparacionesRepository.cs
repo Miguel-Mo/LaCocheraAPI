@@ -20,20 +20,20 @@ namespace LaCochera.DAL.Repositories.Implementations
             _mapper = mapper;
         }
 
-        public ICollection<ReparacionDTO> Read()
+        public ICollection<ReparacionAmpliadoDTO> Read()
         {
             var lista = _context.Reparaciones.ToList();
 
-            var listaDTO = _mapper.Map<ICollection<ReparacionDTO>>(lista);
+            var listaDTO = _mapper.Map<ICollection<ReparacionAmpliadoDTO>>(lista);
 
             return listaDTO;
         }
 
-        public ReparacionDTO Read(int id)
+        public ReparacionAmpliadoDTO Read(int id)
         {
             var item = _context.Reparaciones.Find(id);
 
-            return _mapper.Map<ReparacionDTO>(item);
+            return _mapper.Map<ReparacionAmpliadoDTO>(item);
         }
     }
 }

@@ -13,10 +13,8 @@ namespace LaCochera.Core.DTO.Vehiculos
         public string TiempoUsado { get; set; }
         public string Imagen { get; set; }
         public int KmRecorridos { get; set; }
-        public int CombustibleId { get; set; }
 
         public CombustibleDTO Combustible { get; set; }
         public VehiculoDTO Vehiculo { get; set; }
-        public ICollection<PropuestaVentaDTO> PropuestaVenta { get; set; }
     }
 }

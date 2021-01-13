@@ -7,7 +7,7 @@ namespace LaCochera.BL.Contracts
 {
     public interface IReparacionesBL
     {
-        ICollection<ReparacionDTO> Read();
-        ReparacionDTO Read(int id);
+        ICollection<ReparacionAmpliadoDTO> Read();
+        ReparacionAmpliadoDTO Read(int id);
     }
 }

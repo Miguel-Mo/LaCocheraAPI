@@ -24,14 +24,14 @@ namespace LaCochera.API.Controllers
 
         // GET: <PropuestaVentaController>
         [HttpGet]
-        public IEnumerable<PropuestaVentaDTO> Get()
+        public IEnumerable<PropuestaVentaAmpliadoDTO> Get()
         {
             return _propuestaVentaBL.Read();
         }
 
         // GET <PropuestaVentaController>/5
         [HttpGet("{id}")]
-        public PropuestaVentaDTO Get(int id)
+        public PropuestaVentaAmpliadoDTO Get(int id)
         {
             return _propuestaVentaBL.Read(id);
         }
