@@ -22,15 +22,17 @@ namespace LaCochera.DAL.Repositories.Implementations
             _mapper = mapper;
         }
 
-        public ICollection<PropuestaVentaDTO> Read()
+        public ICollection<PropuestaVentaAmpliadoDTO> Read()
         {
             var lista = _context.PropuestaVenta
                 .Include(venta => venta.VehiculoVender)
+                    .ThenInclude(vehiculo =>vehiculo.Vehiculo)
                 .Include(venta => venta.Cliente)
                 .Include(venta => venta.Vendedor)
+                    .ThenInclude(vendedor => vendedor.Usuario)
                 .ToList();
 
-            var listaDTO = _mapper.Map<ICollection<PropuestaVentaDTO>>(lista);
+            var listaDTO = _mapper.Map<ICollection<PropuestaVentaAmpliadoDTO>>(lista);
 
             return listaDTO;
         }

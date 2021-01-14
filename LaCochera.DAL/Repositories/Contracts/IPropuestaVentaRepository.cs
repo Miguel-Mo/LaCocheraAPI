@@ -8,7 +8,7 @@ namespace LaCochera.DAL.Repositories.Contracts
 {
     public interface IPropuestaVentaRepository
     {
-        ICollection<PropuestaVentaDTO> Read();
+        ICollection<PropuestaVentaAmpliadoDTO> Read();
         PropuestaVentaAmpliadoDTO Read(int id);
     }
 }

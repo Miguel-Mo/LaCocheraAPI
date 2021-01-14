@@ -1,5 +1,6 @@
 ﻿using LaCochera.BL.Contracts;
 using LaCochera.Core.DTO;
+using LaCochera.Core.DTO.Ventas;
 using LaCochera.DAL.Repositories.Contracts;
 using System;
 using System.Collections.Generic;

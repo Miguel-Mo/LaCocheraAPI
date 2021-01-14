@@ -1,5 +1,6 @@
 ﻿using LaCochera.BL.Contracts;
 using LaCochera.Core.DTO;
+using LaCochera.Core.DTO.Ventas;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace LaCochera.API.Controllers
 
         // GET: <PropuestaVentaController>
         [HttpGet]
-        public IEnumerable<PropuestaVentaAmpliadoDTO> Get()
+        public IEnumerable<PropuestaVentaDTO> Get()
         {
             return _propuestaVentaBL.Read();
         }
