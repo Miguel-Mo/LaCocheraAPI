@@ -4,7 +4,8 @@ using System.Text;
 
 namespace LaCochera.Core.DTO.Usuarios
 {
-    class Class1
+    class VendedorNombreDTO
     {
+        public UsuarioNombreDTO Usuario { get; set; }
     }
 }
