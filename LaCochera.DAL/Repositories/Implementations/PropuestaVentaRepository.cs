@@ -39,7 +39,14 @@ namespace LaCochera.DAL.Repositories.Implementations
 
         public PropuestaVentaAmpliadoDTO Read(int id)
         {
-            var item = _context.PropuestaVenta.Find(id);
+            var item = _context.PropuestaVenta
+                .Include(venta => venta.VehiculoVender)
+                    .ThenInclude(vehiculo => vehiculo.Vehiculo)
+                .Include(venta => venta.Cliente)
+                .Include(venta => venta.Vendedor)
+                    .ThenInclude(vendedor => vendedor.Usuario)
+                .Where(venta => venta.Id == id)
+                .ToList()[0];
 
             return _mapper.Map<PropuestaVentaAmpliadoDTO>(item);
         }
