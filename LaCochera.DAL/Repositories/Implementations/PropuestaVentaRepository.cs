@@ -42,7 +42,10 @@ namespace LaCochera.DAL.Repositories.Implementations
             var item = _context.PropuestaVenta
                 .Include(venta => venta.VehiculoVender)
                     .ThenInclude(vehiculoVender => vehiculoVender.Vehiculo)
-                    .ThenInclude(vehiculo => vehiculo.Tipo)
+                        .ThenInclude(vehiculo => vehiculo.Concesionario)
+                .Include(venta => venta.VehiculoVender)
+                    .ThenInclude(vehiculoVender => vehiculoVender.Vehiculo)
+                        .ThenInclude(vehiculo => vehiculo.Tipo)    // es raro, pero se hace así
                 .Include(venta => venta.Cliente)
                 .Include(venta => venta.Vendedor)
                     .ThenInclude(vendedor => vendedor.Usuario)
