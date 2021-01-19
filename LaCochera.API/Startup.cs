@@ -69,6 +69,9 @@ namespace LaCochera.API
 
             services.AddScoped<IPropuestaVentaRepository, PropuestaVentaRepository>();
             services.AddScoped<IPropuestasVentaBL, PropuestasVentaBL>();
+
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IUsuarioBL, UsuarioBL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
