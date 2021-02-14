@@ -24,7 +24,7 @@ namespace LaCochera.IntegrationTests
                 Body = new
                 {
                     Usuario = "jose",
-                    Password = "lol"
+                    Password = "1234"
                 }
             };
 
