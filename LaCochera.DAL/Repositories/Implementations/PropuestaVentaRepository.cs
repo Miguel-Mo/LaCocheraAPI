@@ -30,6 +30,7 @@ namespace LaCochera.DAL.Repositories.Implementations
                 .Include(venta => venta.Cliente)
                 .Include(venta => venta.Vendedor)
                     .ThenInclude(vendedor => vendedor.Usuario)
+                .OrderBy(venta => venta.FechaInicio)
                 .ToList();
 
             var listaDTO = _mapper.Map<ICollection<PropuestaVentaAmpliadoDTO>>(lista);
