@@ -1,4 +1,6 @@
 ﻿using LaCochera.API;
+using LaCochera.Core.DTO;
+using LaCochera.Core.DTO.Ventas;
 using LaCochera.DAL.Models;
 using System;
 using System.Collections.Generic;
@@ -26,21 +28,18 @@ namespace LaCochera.IntegrationTests
             //Arrange
             var request = new
             {
-                Url = "/PropuestaVenta",
-
+                Url = "/PropuestaVenta"
             };
 
             // Act
             var response = await Client.GetAsync(request.Url);
             var value = await response.Content.ReadAsStringAsync();
-            var listaPropuestas = JsonSerializer.Deserialize<List<PropuestaVenta>>(value);
+            var listaPropuestas = JsonSerializer.Deserialize<List<PropuestaVentaDTO>>(value);
 
 
             //Assert
             response.EnsureSuccessStatusCode();
             Assert.True(listaPropuestas.Count == 30);
-
-
         }
 
 
@@ -49,44 +48,33 @@ namespace LaCochera.IntegrationTests
         {
 
             //Arrange
-            PropuestaVenta propuesta = new PropuestaVenta
+            var propuesta = new PropuestaVentaAmpliadoDTO
             {
                 Id = 5,
-                ClienteId = 3,
-                VendedorId = 1,
-                VehiculoVenderId = 23,
                 Estado = "pendiente",
-                FechaInicio = DateTime.Parse("2020 - 11 - 26 08:17:37"),
+                FechaInicio = DateTime.Parse("2020-11-26 08:17:37"),
                 FechaFin = null,
                 FechaLimite = DateTime.Parse("2020-11-28"),
-                Presupuesto = 20000
+                Presupuesto = 20000,
+                Cliente = null,
+                VehiculoVender = null,
+                Vendedor = null
             };
 
             var request = new
             {
-                Url = "/PropuestaVenta/5",
-
+                Url = "/PropuestaVenta/5"
             };
 
             // Act
             var response = await Client.GetAsync(request.Url);
             var value = await response.Content.ReadAsStringAsync();
-            var Propuesta = JsonSerializer.Deserialize<PropuestaVenta>(value);
-
+            var Propuesta = JsonSerializer.Deserialize<PropuestaVentaAmpliadoDTO>(value);
 
 
             //Assert
             response.EnsureSuccessStatusCode();
             Assert.Equal(propuesta, Propuesta);
-
-
-
         }
-
-
-
-
-
-
     }
 }

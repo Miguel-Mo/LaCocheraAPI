@@ -9,7 +9,7 @@ namespace LaCochera.Core.DTO.Ventas
         public int Id { get; set; }
         public string Estado { get; set; }
         public DateTime FechaInicio { get; set; }
-        public DateTime FechaFin { get; set; }
+        public DateTime? FechaFin { get; set; }
         public DateTime FechaLimite { get; set; }
         public int Presupuesto { get; set; }
     }
