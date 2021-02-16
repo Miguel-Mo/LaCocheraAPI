@@ -18,5 +18,22 @@ namespace LaCochera.DAL.Models
         public virtual Cliente Cliente { get; set; }
         public virtual VehiculosVender VehiculoVender { get; set; }
         public virtual Vendedores Vendedor { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is PropuestaVenta venta &&
+                   Id == venta.Id &&
+                   ClienteId == venta.ClienteId &&
+                   VendedorId == venta.VendedorId &&
+                   VehiculoVenderId == venta.VehiculoVenderId &&
+                   Estado == venta.Estado &&
+                   FechaInicio == venta.FechaInicio &&
+                   FechaFin == venta.FechaFin &&
+                   FechaLimite == venta.FechaLimite &&
+                   Presupuesto == venta.Presupuesto &&
+                   EqualityComparer<Cliente>.Default.Equals(Cliente, venta.Cliente) &&
+                   EqualityComparer<VehiculosVender>.Default.Equals(VehiculoVender, venta.VehiculoVender) &&
+                   EqualityComparer<Vendedores>.Default.Equals(Vendedor, venta.Vendedor);
+        }
     }
 }

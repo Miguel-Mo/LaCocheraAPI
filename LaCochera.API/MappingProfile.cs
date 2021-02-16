@@ -15,12 +15,14 @@ namespace LaCochera.API
         {
             // Usuarios
             CreateMap<Usuarios, UsuarioDTO>();
+            CreateMap<Usuarios, UsuarioNombreDTO>();
 
             CreateMap<Mecanicos, MecanicoDTO>();
             CreateMap<Mecanicos, MecanicoConReparacionesDTO>();
             CreateMap<Especialidades, EspecialidadDTO>();
 
             CreateMap<Vendedores, VendedorDTO>();
+            CreateMap<Vendedores, VendedorNombreDTO>();
             CreateMap<Vendedores, VendedorConVentasDTO>();
 
             CreateMap<Jefe, JefeDTO>();

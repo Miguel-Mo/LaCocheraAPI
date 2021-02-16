@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LaCochera.Core.DTO;
+using LaCochera.Core.DTO.Usuarios;
 using LaCochera.DAL.Models;
 using LaCochera.DAL.Repositories.Contracts;
 using System;
@@ -20,11 +21,11 @@ namespace LaCochera.DAL.Repositories.Implementations
             _mapper = mapper;
         }
 
-        public ICollection<VendedorDTO> Read()
+        public ICollection<VendedorNombreDTO> Read()
         {
             var lista = _context.Vendedores.ToList();
 
-            var listaDTO = _mapper.Map<ICollection<VendedorDTO>>(lista);
+            var listaDTO = _mapper.Map<ICollection<VendedorNombreDTO>>(lista);
 
             return listaDTO;
         }
@@ -34,6 +35,11 @@ namespace LaCochera.DAL.Repositories.Implementations
             var item = _context.Vendedores.Find(id);
 
             return _mapper.Map<VendedorDTO>(item);
+        }
+
+        ICollection<VendedorDTO> IVendedoresRepository.Read()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaCochera.Core.DTO.Usuarios;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,6 +9,6 @@ namespace LaCochera.Core.DTO
     {
         public int Id { get; set; }
         public int NumVentas { get; set; }
-        public UsuarioDTO Usuario { get; set; }
+        public UsuarioNombreDTO Usuario { get; set; }
     }
 }
