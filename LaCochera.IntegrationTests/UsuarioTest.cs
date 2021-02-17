@@ -59,33 +59,25 @@ namespace LaCochera.IntegrationTests
                 Nombre ="Jose",
                 Apellidos ="De la Torre",
                 Dni ="44677249-T",
-                Email =" pspittall0@washingtonpost.com",
+                Email = "pspittall0@washingtonpost.com",
                 Telefono = "933-260-7969",
                 Salario = 2873
-
             };
 
             var request = new
             {
                 Url = "/Usuario/1",
-
             };
 
             // Act
             var response = await Client.GetAsync(request.Url);
             var value = await response.Content.ReadAsStringAsync();
             var Usuarios = JsonConvert.DeserializeObject<UsuarioDTO>(value);
-            //var Propuesta = JsonConvert.DeserializeObject<PropuestaVentaAmpliadoDTO>(value);
 
 
             //Assert
             response.EnsureSuccessStatusCode();
-            Assert.Equal(usuario, Usuarios);
+            Assert.True(usuario == Usuarios);
         }
-
-
-
-
-
     }
 }

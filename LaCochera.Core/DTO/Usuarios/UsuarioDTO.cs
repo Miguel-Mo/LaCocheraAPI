@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LaCochera.Core.DTO
 {
-    public class UsuarioDTO
+    public class UsuarioDTO : IEquatable<UsuarioDTO>
     {
         public int Id { get; set; }
         public int ConcesionarioId { get; set; }
@@ -19,17 +19,32 @@ namespace LaCochera.Core.DTO
 
         public override bool Equals(object obj)
         {
-            return obj is UsuarioDTO dTO &&
-                   Id == dTO.Id &&
-                   ConcesionarioId == dTO.ConcesionarioId &&
-                   Login == dTO.Login &&
-                   Tipo == dTO.Tipo &&
-                   Nombre == dTO.Nombre &&
-                   Apellidos == dTO.Apellidos &&
-                   Dni == dTO.Dni &&
-                   Email == dTO.Email &&
-                   Telefono == dTO.Telefono &&
-                   Salario == dTO.Salario;
+            return Equals(obj as UsuarioDTO);
+        }
+
+        public bool Equals(UsuarioDTO other)
+        {
+            return other != null &&
+                   Id == other.Id &&
+                   ConcesionarioId == other.ConcesionarioId &&
+                   Login == other.Login &&
+                   Tipo == other.Tipo &&
+                   Nombre == other.Nombre &&
+                   Apellidos == other.Apellidos &&
+                   Dni == other.Dni &&
+                   Email == other.Email &&
+                   Telefono == other.Telefono &&
+                   Salario == other.Salario;
+        }
+
+        public static bool operator ==(UsuarioDTO left, UsuarioDTO right)
+        {
+            return EqualityComparer<UsuarioDTO>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(UsuarioDTO left, UsuarioDTO right)
+        {
+            return !(left == right);
         }
     }
 }
