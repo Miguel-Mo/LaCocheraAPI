@@ -1,7 +1,9 @@
 ﻿using LaCochera.API;
 using LaCochera.Core.DTO;
+using LaCochera.Core.DTO.Clientes;
 using LaCochera.Core.DTO.Ventas;
 using LaCochera.DAL.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -34,7 +36,7 @@ namespace LaCochera.IntegrationTests
             // Act
             var response = await Client.GetAsync(request.Url);
             var value = await response.Content.ReadAsStringAsync();
-            var listaPropuestas = JsonSerializer.Deserialize<List<PropuestaVentaDTO>>(value);
+            var listaPropuestas = JsonConvert.DeserializeObject<List<PropuestaVentaDTO>>(value);
 
 
             //Assert
@@ -56,7 +58,12 @@ namespace LaCochera.IntegrationTests
                 FechaFin = null,
                 FechaLimite = DateTime.Parse("2020-11-28"),
                 Presupuesto = 20000,
-                Cliente = null,
+                Cliente = new ClienteDTO {
+                    Apellidos = "Gleeton",
+                    DescripcionVehiculo = null,
+                    Dni = "65176089-A",
+                    Email = "cgleeton2@w3.org",
+                },
                 VehiculoVender = null,
                 Vendedor = null
             };
@@ -69,7 +76,7 @@ namespace LaCochera.IntegrationTests
             // Act
             var response = await Client.GetAsync(request.Url);
             var value = await response.Content.ReadAsStringAsync();
-            var Propuesta = JsonSerializer.Deserialize<PropuestaVentaAmpliadoDTO>(value);
+            var Propuesta = JsonConvert.DeserializeObject<PropuestaVentaAmpliadoDTO>(value);
 
 
             //Assert
