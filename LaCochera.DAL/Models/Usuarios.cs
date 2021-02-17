@@ -28,5 +28,25 @@ namespace LaCochera.DAL.Models
         public virtual ICollection<Jefe> Jefe { get; set; }
         public virtual ICollection<Mecanicos> Mecanicos { get; set; }
         public virtual ICollection<Vendedores> Vendedores { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Usuarios usuarios &&
+                   Id == usuarios.Id &&
+                   ConcesionarioId == usuarios.ConcesionarioId &&
+                   Login == usuarios.Login &&
+                   Password == usuarios.Password &&
+                   Tipo == usuarios.Tipo &&
+                   Nombre == usuarios.Nombre &&
+                   Apellidos == usuarios.Apellidos &&
+                   Dni == usuarios.Dni &&
+                   Email == usuarios.Email &&
+                   Telefono == usuarios.Telefono &&
+                   Salario == usuarios.Salario &&
+                   EqualityComparer<Concesionarios>.Default.Equals(Concesionario, usuarios.Concesionario) &&
+                   EqualityComparer<ICollection<Jefe>>.Default.Equals(Jefe, usuarios.Jefe) &&
+                   EqualityComparer<ICollection<Mecanicos>>.Default.Equals(Mecanicos, usuarios.Mecanicos) &&
+                   EqualityComparer<ICollection<Vendedores>>.Default.Equals(Vendedores, usuarios.Vendedores);
+        }
     }
 }

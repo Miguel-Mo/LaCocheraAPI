@@ -8,5 +8,12 @@ namespace LaCochera.Core.DTO.Usuarios
     {
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is UsuarioNombreDTO dTO &&
+                   Nombre == dTO.Nombre &&
+                   Apellidos == dTO.Apellidos;
+        }
     }
 }

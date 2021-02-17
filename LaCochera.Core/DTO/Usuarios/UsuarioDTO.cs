@@ -16,5 +16,20 @@ namespace LaCochera.Core.DTO
         public string Email { get; set; }
         public string Telefono { get; set; }
         public int Salario { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is UsuarioDTO dTO &&
+                   Id == dTO.Id &&
+                   ConcesionarioId == dTO.ConcesionarioId &&
+                   Login == dTO.Login &&
+                   Tipo == dTO.Tipo &&
+                   Nombre == dTO.Nombre &&
+                   Apellidos == dTO.Apellidos &&
+                   Dni == dTO.Dni &&
+                   Email == dTO.Email &&
+                   Telefono == dTO.Telefono &&
+                   Salario == dTO.Salario;
+        }
     }
 }

@@ -63,6 +63,7 @@ namespace LaCochera.IntegrationTests
                     DescripcionVehiculo = null,
                     Dni = "65176089-A",
                     Email = "cgleeton2@w3.org",
+                    FechaRegistro = DateTime.Parse("2020 - 11 - 04T22:49:12.0000000"),
                 },
                 VehiculoVender = null,
                 Vendedor = null

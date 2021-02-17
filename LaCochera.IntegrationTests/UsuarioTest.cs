@@ -1,5 +1,7 @@
 ﻿using LaCochera.API;
+using LaCochera.Core.DTO;
 using LaCochera.DAL.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -34,7 +36,7 @@ namespace LaCochera.IntegrationTests
             // Act
             var response = await Client.GetAsync(request.Url);
             var value = await response.Content.ReadAsStringAsync();
-            var listaUsuarios = JsonSerializer.Deserialize<List<Usuarios>>(value);
+            var listaUsuarios = System.Text.Json.JsonSerializer.Deserialize<List<Usuarios>>(value);
 
 
             //Assert
@@ -43,16 +45,16 @@ namespace LaCochera.IntegrationTests
         }
 
 
+
         [Fact]
         public async Task UsuarioTest_GetUsuario_ReturnsUsuario()
         {
             //Arrange
-            Usuarios usuario = new Usuarios
+            var usuario = new UsuarioDTO
             {
                 Id = 1,
                 ConcesionarioId=5,
                 Login="Jose",
-                Password= "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
                 Tipo ="jefe",
                 Nombre ="Jose",
                 Apellidos ="De la Torre",
@@ -65,15 +67,15 @@ namespace LaCochera.IntegrationTests
 
             var request = new
             {
-                Url = "/Usuarios/1",
+                Url = "/Usuario/1",
 
             };
 
             // Act
             var response = await Client.GetAsync(request.Url);
             var value = await response.Content.ReadAsStringAsync();
-            var Usuarios = JsonSerializer.Deserialize<Usuarios>(value);
-
+            var Usuarios = JsonConvert.DeserializeObject<UsuarioDTO>(value);
+            //var Propuesta = JsonConvert.DeserializeObject<PropuestaVentaAmpliadoDTO>(value);
 
 
             //Assert

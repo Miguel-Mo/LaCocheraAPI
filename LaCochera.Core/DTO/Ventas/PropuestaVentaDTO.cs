@@ -12,5 +12,16 @@ namespace LaCochera.Core.DTO.Ventas
         public DateTime? FechaFin { get; set; }
         public DateTime FechaLimite { get; set; }
         public int Presupuesto { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is PropuestaVentaDTO dTO &&
+                   Id == dTO.Id &&
+                   Estado == dTO.Estado &&
+                   FechaInicio == dTO.FechaInicio &&
+                   FechaFin == dTO.FechaFin &&
+                   FechaLimite == dTO.FechaLimite &&
+                   Presupuesto == dTO.Presupuesto;
+        }
     }
 }
