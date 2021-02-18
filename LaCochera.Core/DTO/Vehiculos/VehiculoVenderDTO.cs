@@ -16,5 +16,29 @@ namespace LaCochera.Core.DTO.Vehiculos
 
         public CombustibleDTO Combustible { get; set; }
         public VehiculoDTO Vehiculo { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is VehiculoVenderDTO dTO &&
+                   Id == dTO.Id &&
+                   Precio == dTO.Precio &&
+                   Vendido == dTO.Vendido &&
+                   SegundaMano == dTO.SegundaMano &&
+                   TiempoUsado == dTO.TiempoUsado &&
+                   Imagen == dTO.Imagen &&
+                   KmRecorridos == dTO.KmRecorridos &&
+                   EqualityComparer<CombustibleDTO>.Default.Equals(Combustible, dTO.Combustible) &&
+                   EqualityComparer<VehiculoDTO>.Default.Equals(Vehiculo, dTO.Vehiculo);
+        }
+
+        public static bool operator ==(VehiculoVenderDTO left, VehiculoVenderDTO right)
+        {
+            return EqualityComparer<VehiculoVenderDTO>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(VehiculoVenderDTO left, VehiculoVenderDTO right)
+        {
+            return !(left == right);
+        }
     }
 }

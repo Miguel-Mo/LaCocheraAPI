@@ -2,11 +2,8 @@
 using LaCochera.Core.DTO;
 using LaCochera.DAL.Models;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -58,7 +55,7 @@ namespace LaCochera.IntegrationTests
                 Tipo ="jefe",
                 Nombre ="Jose",
                 Apellidos ="De la Torre",
-                Dni ="44677249-T",
+                Dni = "44677249-T",
                 Email = "pspittall0@washingtonpost.com",
                 Telefono = "933-260-7969",
                 Salario = 2873
@@ -78,6 +75,7 @@ namespace LaCochera.IntegrationTests
             //Assert
             response.EnsureSuccessStatusCode();
             Assert.True(usuario == Usuarios);
+
         }
     }
 }
