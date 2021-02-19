@@ -36,23 +36,5 @@ namespace LaCochera.API.Controllers
         {
             return _propuestaVentaBL.Read(id);
         }
-
-        // POST <PropuestaVentaController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT <PropuestaVentaController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE <PropuestaVentaController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
