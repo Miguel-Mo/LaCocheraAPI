@@ -1,6 +1,7 @@
 ﻿using LaCochera.API;
 using LaCochera.Core.DTO;
 using LaCochera.Core.DTO.Clientes;
+using LaCochera.Core.DTO.Usuarios;
 using LaCochera.Core.DTO.Vehiculos;
 using LaCochera.Core.DTO.Ventas;
 using Newtonsoft.Json;
@@ -100,7 +101,11 @@ namespace LaCochera.IntegrationTests
                 {
                     Id = 1,
                     NumVentas = 40,
-                    Usuario = null
+                    Usuario = new UsuarioNombreDTO
+                    {
+                        Nombre= "Jose",
+                        Apellidos= "De la Torre",
+                    },
                 }
             };
 
