@@ -60,5 +60,28 @@ namespace LaCochera.IntegrationTests
             Assert.True(value == "false");
         }
 
+        [Fact]
+        public async Task LoginTests_LoginNotBoss_ReturnsFalse()
+        {
+            // Arrange
+            var request = new
+            {
+                Url = "/login",
+                Body = new
+                {
+                    Username = "Miguel",
+                    Password = "1234"
+                }
+            };
+
+            // Act
+            var response = await Client.PostAsync(request.Url, ContentHelper.GetStringContent(request.Body));
+            var value = await response.Content.ReadAsStringAsync();
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+            Assert.True(value == "false");
+        }
+
     }
 }
